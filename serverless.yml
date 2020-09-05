@@ -1,0 +1,16 @@
+service: a-cloud-project-service
+
+provider:
+    name: aws
+    region: ap-southeast-2
+    runtime: nodejs12.x
+
+functions:
+    GetFestivals:
+      handler: musicFestivals/getFestivals.handler
+      private: true
+      events:
+        - http: GET /api/v1/festivals
+
+plugins:
+  - serverless-offline
